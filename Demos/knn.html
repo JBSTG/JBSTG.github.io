@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Demos - Joel Staggs</title>
+        <style>
+            #demo-container{
+                height: 600px;
+            }
+        </style>
+        <link rel="stylesheet" href="../stylesheet.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </head>
+<body>
+    <div class="jumbotron jumbotron-fluid bg-white">
+        <div class="container">
+          <h1 class="display-6">Joel Staggs</h1>
+          <p >Software Developer</p>
+          <nav class="navbar navbar-fluid navbar-expand-lg navbar-light bg-dark">
+            <a class="navbar-brand text-white" href="../index.html">Home</a>
+            <a class="navbar-brand text-white" href="about.html">About</a>
+            <a class="navbar-brand text-white" href="index.html">Demos</a>
+            <a class="navbar-brand text-white" href="../Projects/index.html">Projects</a>
+            <a class="navbar-brand text-white" href="#">Resume</a>
+          </nav>
+          <!--End of Nav-->
+          <div class="jumbotron bg-white">
+            <div class="container">
+              <h1 class="display-4 ">K Nearest Neighbors for handwriting identification</h1>
+              <p class="lead">
+                This program uses the K Nearest Neighbors algorithm to identify a number.
+                KNN can be used to classify/regress a sample by comparing it to labelled samples, and finding the optimal
+                number of most similar samples.
+                This algorithm typically wouldn't be used for such a task; however, it's an interesting challenge.
+                KNN is a supervised learning algorithm, it requires some past labelled data to generate predictions.
+                It's also somewhat limited in how you can improve the algorithm itself, as it has only two parameters
+                the programmer can manipulate: K and NN.
+                This means we will depend largely on how we format the data.
+                In this implementation, I used Manhattan distance for my comparison metric,
+                and leave-one-out for my cross-validation.
+              </p>
+              <div class="center">
+                <img src="knn_data_representation.png"></img>
+                <p>
+                  How we will represent our data.
+                </p>
+              </div>
+              <p class="lead">
+                As you can see, we read in a binary matrix, and expand the edges to 7's and 6's,
+                These edges will reduce the penalty on near-misses to account for the difference in size and position of the handwriting.
+              </p>
+              <p class="lead">
+                Now, let's keep our workflow simple:
+              </p>
+              <p><i>Set aside training and testing data into two sets.</i></p>
+              <p><i>Find optimal K by running KNN algorithm on ONLY the training data.</i></p>
+              <p><i>Using leave-one-out cross-validation, shuffle training data to account for sample variability.</i></p>
+              <p><i>Finally, run the algorithm with the optimal K value on our testing data.</i></p>
+
+              <div class="center">
+                <img src="knn_results.png"></img>
+                <p>
+                  Our results, the second row is our prediction.
+                </p>
+              </div>
+              <p class="lead">
+                Using this method, we achieve 86% accuracy. Of course, 100 is still a small sample size,
+                so this algorithm could be even more effective given more labelled input.  
+              </p>
+              <p class="lead">
+                The code for this project can be found <a href="numbers.cs">here</a>, if you'd like to know more feel free to give me a call.
+              </p>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script>
+    </script>
+</body>
+</html>

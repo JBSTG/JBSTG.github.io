@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Projects - Joel Staggs</title>
+        <style>
+            #demo-container{
+                height: 600px;
+            }
+        </style>
+        <link rel="stylesheet" href="../../stylesheet.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </head>
+<body>
+    <div class="jumbotron jumbotron-fluid bg-white">
+        <div class="container">
+          <h1 class="display-6">Joel Staggs</h1>
+          <p >Software Developer</p>
+          <nav class="navbar navbar-fluid navbar-expand-lg navbar-light bg-dark">
+            <a class="navbar-brand text-white" href="../../index.html">Home</a>
+            <a class="navbar-brand text-white" href="../../about.html">About</a>
+            <a class="navbar-brand text-white" href="../index.html">Projects</a>
+            <a class="navbar-brand text-white" href="#">Resume</a>
+          </nav>
+          <!--End of Nav-->
+          
+        </div>
+        <div class="jumbotron bg-white">
+          <div class="row">
+            <div class="col-md-10 offset-md-1 col-12">
+          <h1 class="display-4 ">Kanji Crawl</h1>
+        </div>
+      </div>
+            <div class="row">
+            <div class="col-md-8 offset-md-2 col-12">
+            <p class="lead">
+              This project uses a <a target="_blank" href="https://kanjiapi.dev/">remote API</a> to download necessary data to play a small memorization game.
+              Kanji is one of the three written scripts of the Japanese Language, it contains several thousand logographs that each represent words or concepts.
+              This project downloads kanji as JSON data, creates C# objects, and serializes those objects to XML documents for local storage. 
+              We do this to avoid unneeded stress on the remote server we obtain our data from, as well as to track the user's progress locally.
+            </p>
+          </div>
+            <div class="col-md-4 offset-md-4 col-12">
+              <img class="img-fluid" src="https://www.japan-guide.com/g4/2046_01.gif" onclick="loadModal(this)">
+            </div>
+            <div class="col-md-4 offset-md-4 col-12">
+              <div class="caption">
+                <p>Some Examples.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 offset-md-2 col-12">
+            <p class="lead">
+              First, we look at the data we will need to download from the API. For our game we simply need the kanji's character
+              and meanings; however, we will also take the readings as those may be useful in late versions of this program.
+              Currently, players are given a random kanji definition from the current set.
+              They must navigate around several incorrect kanji and find the one that corresponds to the given definition. 
+            </p>
+          </div>
+            <div class="col-md-6 offset-md-3 col-12">
+              <img class="img-fluid" src="kanjiApiData.png" onclick="loadModal(this)">
+            </div>
+            <div class="col-md-4 offset-md-4 col-12">
+              <div class="caption">
+                <p>The data available for each kanji.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 offset-md-2 col-12">
+            <p class="lead">
+              The kanji are categorized by grade, and the player will select the grade they wish to practice before playing.
+              Once the user selects a grade, a corresponding XML file is deserialized into a KanjiList Object.
+              If the KanjiList is empty, we must download the list from the API.
+            </p>
+          </div>
+            <div class="col-md-6 offset-md-3 col-12">
+              <img class="img-fluid" src="readFromFile.png" onclick="loadModal(this)">
+            </div>
+            <div class="col-md-4 offset-md-4 col-12">
+              <div class="caption">
+                <p>This function reads from our local storage and loads the selected list into our program.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 offset-md-2 col-12">
+            <p class="lead">
+              To download the kanji, we need an HttpClient and an async function. Using the function below we download each kanji.
+              Unfortunately, it takes a while to download the entire set. I may add a separate thread to avoid freezing the GUI 
+              while the kanji downloads.
+            </p>
+          </div>
+            <div class="col-md-6 offset-md-3 col-12">
+              <img class="img-fluid" src="download.png" onclick="loadModal(this)">
+            </div>
+            <div class="col-md-4 offset-md-4 col-12">
+              <div class="caption">
+                <p>Downloading our data and creating a Kanji object.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 offset-md-2 col-12">
+            <p class="lead">
+              Once the list is downloaded and placed into a KanjiList object, it is written to the corresponding XML file through
+              an XML serializer. 
+              Next, a new object is instantiated using the recently downloaded data (or data loaded from an existing file if a set exists for a category).
+              This object handles the basic game loop, which is pretty straightforward.
+              Several random kanji are scattered across a grid, and one is randomly selected as the target.
+              The user is given the definitions of the target,        
+            </p>
+          </div>
+            <div class="col-md-6 offset-md-3 col-12">
+              <img class="img-fluid" src="game.png" onclick="loadModal(this)">
+            </div>
+            <div class="col-md-4 offset-md-4 col-12">
+              <div class="caption">
+                <p>Current game screen, just a arrow-navigation game.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 offset-md-2 col-12">
+            <p class="lead">
+              When the user hits the save and quit button, their accuracy for memorizing a given kanji is updated.
+              When the user next loads the game, they will be able to see that accuracy in the upper-left corner.
+            </p>
+          </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 offset-md-2 col-12">
+            <p class="lead">
+              The primary goal of this project was to work with local storage and remote API usage in C#, which I feel was a great success.
+              
+              I may improve the presentation of this project in the future,
+              so the github repository can be found <a target="_blank" href="https://github.com/JBSTG/Kanji-Crawl/">here.</a>
+            </p>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modalBg" id="modal" onclick="closeModal(this)">
+        <div class="row h-100">
+        <div class="align-self-center mx-auto d-block">
+          <img id="modalImg" class="img-fluid" src="#">
+        </div>
+        </div>
+      </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="../../lib.js"></script>
+</body>
+</html>

@@ -1,178 +1,218 @@
 <!doctype html>
 <html>
-    <head>
-        <title>Projects - Joel Staggs</title>
-        <style>
-            #demo-container{
-                height: 600px;
-            }
-        </style>
-        <link rel="stylesheet" href="../../stylesheet.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    </head>
+
+<head>
+  <title>KNN to Identify Individual Zebra Finches - Joel Staggs</title>
+  <style>
+
+  </style>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../stylesheet.css">
+
+</head>
+
 <body>
-    <div class="jumbotron jumbotron-fluid bg-white">
-        <div class="container">
-          <h1 class="display-6">Joel Staggs</h1>
-          <p >Software Developer</p>
-          <nav class="navbar navbar-fluid navbar-expand-lg navbar-light bg-dark">
-            <a class="navbar-brand text-white" href="../../index.html">Home</a>
-            <a class="navbar-brand text-white" href="../../about.html">About</a>
-            <a class="navbar-brand text-white" href="../index.html">Projects</a>
-            <a class="navbar-brand text-white" href="#">Resume</a>
-          </nav>
-          <!--End of Nav-->
-          
-        </div>
-        <div class="jumbotron bg-white">
-          <div class="row">
-            <div class="col-md-10 offset-md-1 col-12">
-          <h1 class="display-4 ">KNN to Identify Individual Zebra Finches</h1>
-        </div>
+  <div class="container-fluid theme-inverse">
+    <div class="row theme">
+      <div class="col-12">
+        <h1>Joel Staggs</h1>
       </div>
-            <div class="row">
-            <div class="col-md-8 offset-md-2 col-12">
-            <p class="lead">
-              This project utilizes C# and supervised learning techniques to identify unique bird songs .
-              Supervised learning is the method of using data with a known classification or value to predict
-              the value or classification of some unknown data.
-              K Nearest Neighbors uses the K most similar known samples to make a conclusion.
-              For example, this project uses numbers to label birds.
-              If picking the nearest neighbor (1NN) has shown to be most accurate, we will label a bird based off the
-              single most similar audio file.  
-              The primary challenges 
-              are determining what makes two samples similar (K)
-              and determining how many comparisons are optimal (NN). 
-            </p>
-          </div>
-            <div class="col-md-4 offset-md-4 col-12">
-              <img class="img-fluid" src="https://www.thespruce.com/thmb/zLEH-GyD7_m_bBV5Wzn0G1Kr9Ps=/1500x1000/filters:fill(auto,1)/zebra-finch-male-f8dec4180a224389ae226e6a621d4fbd.jpg" onclick="loadModal(this)">
-            </div>
-            <div class="col-md-4 offset-md-4 col-12">
-              <div class="caption">
-                <p>Zebra Finch</p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 offset-md-2 col-12">
-          <p class="lead">
-            First we must make sense of our files to extract data. Since we are using WAV files, we need to understand the file's structure.
-          </p>
-        </div>
+      <div class="col-12">
+        <p class=theme-inverse>Software Developer</p>
       </div>
-          <div class="col-md-4 offset-md-4 col-12">
-            <img class="img-fluid" src="http://soundfile.sapp.org/doc/WaveFormat/wav-sound-format.gif" onclick="loadModal(this)">
-          </div>
-          <div class="caption">
-            <p>WAV File Format</p>
-          </div>
-          <div class="row">
-            <div class="col-md-8 offset-md-2 col-12">
-          <p class="lead">
-            WAV files can have any number of these headers, which can determine many attributes of the following audio samples.
-            Our files luckily have only one. This means that we simply check the first 44 bytes of the file for formatting information.
-            We are concerned with the number of channels (our files are mono-channeled, meaning only one sound source) and bits per sample.
-            Our bits per sample is 16, meaning a two-byte signed sample (one-byte samples are unsigned). We read in the file as a byte array
-            and add bytes to create samples. Our samples are little-endian, which means we multiply the second byte by ten, as it will be the
-            more significant byte within the pair. If we plot the audio sample array for an audio file in Excel, we see the following.
-          </p>
-        </div>
+    </div>
+    <div class="row spacer"></div>
+    <div class="row theme-inverse theme-inverse">
+      <div class="col-md-2 col-12">
+        <a class="theme-inverse-link" href="../../index.html">Projects</a>
       </div>
-        <div class="col-md-4 offset-md-4 col-12">
-          <img class="img-fluid" src="bytes.png" onclick="loadModal(this)">
-        </div>
-        <div class="caption">
-          <p>Casting a bytearray to a signed bytearray, since these samples use 16-bit samples the sign is important.</p>
-        </div>
-          <div class="col-md-4 offset-md-4 col-12">
-            <img class="img-fluid" src="mal1song1basic.png" onclick="loadModal(this)">
-          </div>
-          <div class="caption">
-            <p>A plot of an audio file</p>
-          </div>
-          <div class="row">
-            <div class="col-md-8 offset-md-2 col-12">
-          <p class="lead">
-            As you can see, this appears very similar to a typical audiograph. Next, we need to find a way to treat the data to improve performance of our comparisons.
-            Several strategies were tried, such as normalizing from 0-1, or only using loudest samples, but these were unsuccessful. The two
-            treatments that had the most significant effect were removing ambient (zero-valued) audio samples, and using only the absolute value of the
-            the audio sample to remove negative samples.   
-          </p>
-        </div>
+      <div class="col-md-2 col-12">
+        <a class="theme-inverse-link" href="../../about.html">About</a>
       </div>
-          <div class="col-md-4 offset-md-4 col-12">
-            <img class="img-fluid" src="mal1song1treated.png" onclick="loadModal(this)">
-          </div>
-          <div class="caption">
-            <p>Our file after treatment</p>
-          </div>
-          <div class="row">
-            <div class="col-md-8 offset-md-2 col-12">
-          <p class="lead">
-            Next, we will select a cross-validation method. Cross-validation is used to ensure that our results will be consistent.
-            We will use "leave one out" cross-validation, which takes a random sample from our labelled data and compares it to the remaining 
-            labelled data to find our optimal K. Since we will always know the answer, we are able to average the results and safely
-            estimate our optimal K. We still need to pick a comparison algorithm; however, this step almost completely determines program flow.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4 offset-md-4 col-12">
-        <img class="img-fluid" src="crossvalidation.png">
-      </div>
+    </div>
+    <!--End of Nav-->
+    <div class="row spacer">
+    </div>
+  <div class="row theme">
+    <div class="col-md-10 offset-md-1 col-12">
+      <h1 class="display-4 ">KNN to Identify Individual Zebra Finches</h1>
+    </div>
+  </div>
+  <div class="row theme-inverse theme-inverse">
+    <div class="col-md-8 offset-md-2 col-12">
+      <p class="lead">
+        This project utilizes C# and supervised learning techniques to identify unique bird songs .
+        Supervised learning is the method of using data with a known classification or value to predict
+        the value or classification of some unknown data.
+        K Nearest Neighbors uses the K most similar known samples to make a conclusion.
+        For example, this project uses numbers to label birds.
+        If picking the nearest neighbor (1NN) has shown to be most accurate, we will label a bird based off the
+        single most similar audio file.
+        The primary challenges
+        are determining what makes two samples similar (K)
+        and determining how many comparisons are optimal (NN).
+      </p>
+    </div>
+    <div class="col-md-4 offset-md-4 col-12">
+      <img class="img-fluid"
+        src="https://www.thespruce.com/thmb/zLEH-GyD7_m_bBV5Wzn0G1Kr9Ps=/1500x1000/filters:fill(auto,1)/zebra-finch-male-f8dec4180a224389ae226e6a621d4fbd.jpg"
+        onclick="loadModal(this)">
+    </div>
+    <div class="col-md-4 offset-md-4 col-12">
       <div class="caption">
-        <p>An example of our cross-validation. In this result, choosing the label of the single nearest neighbor was the most accurate on average.</p>
+        <p class=theme-inverse>Zebra Finch</p>
       </div>
-          <div class="col-md-4 offset-md-4 col-12">
-            <img class="img-fluid" src="https://www.researchgate.net/profile/Nikolaos_Chlis/publication/266617511/figure/fig11/AS:295705362092036@1447513060277/Leave-One-Out-Cross-Validation.png" onclick="loadModal(this)">
-          </div>
-          <div class="caption">
-            <p>An image demonstrating Leave-One-Out-Cross-Validation</p>
-          </div>
-          <div class="row">
-            <div class="col-md-8 offset-md-2 col-12">
-          <p class="lead">
-            The best performing algorithm was cross-correlation, which assumes two identical series' are shifted and attempts
-            to find how much shifting must be done to sync them. The algorithm is simple to implement, but was 
-            tremendously successful with an accuracy of 83%. Several other algorithms were tried, such as Trapezoidal-Rule Integration
-            or Kulback-Leibler Divergence, but those did not have the consistent success that cross-correlation could provide. 
-          </p>
-        </div>
-      </div>
-          <div class="col-md-4 offset-md-4 col-12">
-            <img class="img-fluid" src="https://wikimedia.org/api/rest_v1/media/math/render/svg/42bba62c30eba9816006d62139738eada9042b6b" onclick="loadModal(this)">
-          </div>
-          <div class="caption">
-            <p>The cross-correlation algorithm, better fits form a larger product.</p>
-          </div>
-          <div class="col-md-4 offset-md-4 col-12">
-            <img class="img-fluid" src="ccoutput.png" onclick="loadModal(this)">
-          </div>
-          <div class="caption">
-            <p>Our final results using cross-correlation.</p>
-          </div>
-          <div class="row">
-            <div class="col-md-8 offset-md-2 col-12">
-          <p class="lead">
-            In conclusion, I had a great time working on this project. The code is available <a href="birds.cs">here</a>, and the data
-            <a href="https://www.kaggle.com/neonninja/bird-recognition">here</a>.
-          </p>
-        </div>
-      </div>
-        </div>
-      </div>
+    </div>
+  </div>
+  <div class="row theme-inverse">
+    <div class="col-md-8 offset-md-2 col-12">
+      <p class="lead">
+        First we must make sense of our files to extract data. Since we are using WAV files, we need to understand the
+        file's structure.
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4 offset-md-4 col-12">
+    <img class="img-fluid" src="http://soundfile.sapp.org/doc/WaveFormat/wav-sound-format.gif"
+      onclick="loadModal(this)">
+  </div>
+  <div class="caption">
+    <p class=theme-inverse>WAV File Format</p>
+  </div>
+  <div class="row theme-inverse">
+    <div class="col-md-8 offset-md-2 col-12">
+      <p class="lead">
+        WAV files can have any number of these headers, which can determine many attributes of the following audio
+        samples.
+        Our files luckily have only one. This means that we simply check the first 44 bytes of the file for formatting
+        information.
+        We are concerned with the number of channels (our files are mono-channeled, meaning only one sound source) and
+        bits per sample.
+        Our bits per sample is 16, meaning a two-byte signed sample (one-byte samples are unsigned). We read in the file
+        as a byte array
+        and add bytes to create samples. Our samples are little-endian, which means we multiply the second byte by ten,
+        as it will be the
+        more significant byte within the pair. If we plot the audio sample array for an audio file in Excel, we see the
+        following.
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4 offset-md-4 col-12">
+    <img class="img-fluid" src="bytes.png" onclick="loadModal(this)">
+  </div>
+  <div class="caption">
+    <p class=theme-inverse>Casting a bytearray to a signed bytearray, since these samples use 16-bit samples the sign is important.</p>
+  </div>
+  <div class="col-md-4 offset-md-4 col-12">
+    <img class="img-fluid" src="mal1song1basic.png" onclick="loadModal(this)">
+  </div>
+  <div class="caption">
+    <p class=theme-inverse>A plot of an audio file</p>
+  </div>
+  <div class="row theme-inverse">
+    <div class="col-md-8 offset-md-2 col-12">
+      <p class="lead">
+        As you can see, this appears very similar to a typical audiograph. Next, we need to find a way to treat the data
+        to improve performance of our comparisons.
+        Several strategies were tried, such as normalizing from 0-1, or only using loudest samples, but these were
+        unsuccessful. The two
+        treatments that had the most significant effect were removing ambient (zero-valued) audio samples, and using
+        only the absolute value of the
+        the audio sample to remove negative samples.
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4 offset-md-4 col-12">
+    <img class="img-fluid" src="mal1song1treated.png" onclick="loadModal(this)">
+  </div>
+  <div class="caption">
+    <p class=theme-inverse>Our file after treatment</p>
+  </div>
+  <div class="row theme-inverse">
+    <div class="col-md-8 offset-md-2 col-12">
+      <p class="lead">
+        Next, we will select a cross-validation method. Cross-validation is used to ensure that our results will be
+        consistent.
+        We will use "leave one out" cross-validation, which takes a random sample from our labelled data and compares it
+        to the remaining
+        labelled data to find our optimal K. Since we will always know the answer, we are able to average the results
+        and safely
+        estimate our optimal K. We still need to pick a comparison algorithm; however, this step almost completely
+        determines program flow.
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4 offset-md-4 col-12">
+    <img class="img-fluid" src="crossvalidation.png">
+  </div>
+  <div class="caption">
+    <p class=theme-inverse>An example of our cross-validation. In this result, choosing the label of the single nearest neighbor was the
+      most accurate on average.</p>
+  </div>
+  <div class="col-md-4 offset-md-4 col-12">
+    <img class="img-fluid"
+      src="https://www.researchgate.net/profile/Nikolaos_Chlis/publication/266617511/figure/fig11/AS:295705362092036@1447513060277/Leave-One-Out-Cross-Validation.png"
+      onclick="loadModal(this)">
+  </div>
+  <div class="caption">
+    <p class=theme-inverse>An image demonstrating Leave-One-Out-Cross-Validation</p>
+  </div>
+  <div class="row theme-inverse">
+    <div class="col-md-8 offset-md-2 col-12">
+      <p class="lead">
+        The best performing algorithm was cross-correlation, which assumes two identical series' are shifted and
+        attempts
+        to find how much shifting must be done to sync them. The algorithm is simple to implement, but was
+        tremendously successful with an accuracy of 83%. Several other algorithms were tried, such as Trapezoidal-Rule
+        Integration
+        or Kulback-Leibler Divergence, but those did not have the consistent success that cross-correlation could
+        provide.
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4 offset-md-4 col-12">
+    <img class="img-fluid"
+      src="https://wikimedia.org/api/rest_v1/media/math/render/svg/42bba62c30eba9816006d62139738eada9042b6b"
+      onclick="loadModal(this)">
+  </div>
+  <div class="caption">
+    <p class=theme-inverse>The cross-correlation algorithm, better fits form a larger product.</p>
+  </div>
+  <div class="col-md-4 offset-md-4 col-12">
+    <img class="img-fluid" src="ccoutput.png" onclick="loadModal(this)">
+  </div>
+  <div class="caption">
+    <p class=theme-inverse>Our final results using cross-correlation.</p>
+  </div>
+  <div class="row theme-inverse">
+    <div class="col-md-8 offset-md-2 col-12">
+      <p class="lead">
+        In conclusion, I had a great time working on this project. The code is available <a href="birds.cs">here</a>,
+        and the data
+        <a href="https://www.kaggle.com/neonninja/bird-recognition">here</a>.
+      </p>
+    </div>
+  </div>
 
-      <div class="modalBg" id="modal" onclick="closeModal(this)">
-        <div class="row h-100">
-        <div class="align-self-center mx-auto d-block">
-          <img id="modalImg" class="img-fluid" src="#">
-        </div>
-        </div>
+  <div class="modalBg" id="modal" onclick="closeModal(this)">
+    <div class="row theme-inverse h-100">
+      <div class="align-self-center mx-auto d-block">
+        <img id="modalImg" class="img-fluid" src="#">
       </div>
+    </div>
+  </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src="../../lib.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <script src="../../lib.js"></script>
 </body>
+
 </html>

@@ -12,16 +12,16 @@
 
 <body>
   <div class="container-fluid theme-inverse">
-    <div class="row theme">
-      <div class="col-12">
+    <div class="row theme-inverse">
+      <div class="col-12 ">
         <h1>Joel Staggs</h1>
       </div>
       <div class="col-12">
         <p>Software Developer</p>
       </div>
     </div>
-    <div class="row spacer"></div>
-    <div class="row theme-inverse">
+    <div class="row spacer-very-small theme"></div>
+    <div class="row theme-inverse theme-inverse-navbar">
       <div class="col-md-2 col-12">
         <a class="theme-inverse-link" href="index.html">Projects</a>
       </div>
@@ -30,61 +30,86 @@
       </div>
     </div>
     <!--End of Nav-->
-    <div class="row spacer">
-    </div>
+    <div class="row spacer-very-small theme"></div>
+  </div>
+  <div class="container-fluid post-nav-content">
+    <div class="row spacer"></div>
     <div class="row">
-      <div class="col-12 col-md-10 offset-md-1 theme">
+    <div class="col-12 col-md-10 offset-md-1 theme projects-header ">
+      <div class="">
         <h1 class="display-6">Projects</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 col-md-10 offset-md-1 theme">
         <p class="lead">These are some of my recent programming projects.</p>
+        <div class="row spacer inverse-theme-background">
+        </div>
       </div>
     </div>
-
-    <div class="row spacer ">
-      <div class="col-12 col-md-10 offset-md-1 theme-inverse"></div>
-    </div>
-    
-    <!--KNN Birds-->
+  </div>
+  <div class="row spacer"></div>
+    <!--Inner Row that houses projects-->
     <div class="row">
+
+      <!--KNN Birds-->
       <div class="col-12 col-md-5 offset-md-1 theme-inverse">
         <form action="Projects/knn/index.html" method="GET">
           <button class="project">
             <div class="card">
               <div class="card-body theme-inverse">
-                <h5 class="card-title">KNN to Identify Individual Zebra Finches - C#</h5>
-                <p class="card-text">A supervised classifier using raw WAV audio data</p>
+                <img src="Projects/knn/thumb.png" class="project-thumbnail"></img>
+                <div class="card-text">
+                <h5>KNN to Identify Individual Zebra Finches - C#</h5>
+                <p>A supervised classifier using raw WAV audio data</p>
+              </div>
               </div>
             </div>
           </button>
         </form>
       </div>
 
+      <!--Michael Ancher-->
+      <div class="col-12 col-md-5 theme-inverse">
+        <form action="https://michaelancher.azurewebsites.net/#title" target="_blank" method="GET">
+          <button class="project">
+            <div class="card">
+              <div class="card-body theme-inverse">
+                <img src="Projects/michaelAncher/thumb.png" class="project-thumbnail"></img>
+                <div class="card-text">
+                <h5>Michael Ancher - Bootstrap 3/Scrollify/jQuery</h5>
+                <p>Art-Focused web frontend</p>
+              </div>
+              </div>
+            </div>
+          </button>
+        </form>
+      </div>
 
       <!--Kanji-->
-      <div class="col-12 col-md-5 theme-inverse">
+      <div class="col-12 col-md-5 offset-md-1 theme-inverse">
         <form action="Projects/kanjiCrawl/index.html" method="GET">
           <button class="project">
             <div class="card">
               <div class="card-body theme-inverse">
-                <h5 class="card-title">Kanji Crawl - C#/WPF</h5>
-                <p class="card-text">Experimenting with remote APIs, asynchronous functions, and XML serialization.</p>
+                <img src="Projects/kanjiCrawl/thumb.png" class="project-thumbnail"></img>
+                <div class="card-text">
+                <h5>Kanji Crawl - C#/WPF</h5>
+                <p>Word set based memory game using XML serialization and Sqlite. Written using
+                  MVVM.</p>
+                </div>
               </div>
             </div>
           </button>
         </form>
       </div>
-
       <!--Chat-->
-      <div class="col-12 col-md-5 offset-md-1 theme-inverse">
+      <div class="col-12 col-md-5 theme-inverse">
         <form action="Projects/chat/index.html" method="GET">
           <button class="project">
             <div class="card">
               <div class="card-body theme-inverse">
-                <h5 class="card-title">Client/Server Chat Solution - C#/WPF</h5>
-                <p class="card-text">Socket programming and serialization over datastreams.</p>
+                <img src="Projects/chat/thumb.png" class="project-thumbnail"></img>
+                <div class="card-text">
+                <h5>Client/Server Chat Solution - C#/WPF</h5>
+                <p>Socket programming and serialization over datastreams.</p>
+              </div>
               </div>
             </div>
           </button>
@@ -92,17 +117,21 @@
       </div>
 
       <!--Decision Tree-->
-      <div class="col-12 col-md-5 theme-inverse">
+      <div class="col-12 col-md-5 offset-md-1 theme-inverse">
         <form action="Projects/cdt/index.html" method="GET">
           <button class="project ">
             <div class="card ">
               <div class="card-body theme-inverse">
-                <h5 class="card-title">Entropy-Based Decision Tree - JavaScript</h5>
-                <p class="card-text">Information theory for optimal decision-making.</p>
+                <img src="Projects/cdt/thumb.jpg" class="project-thumbnail"></img>
+                <div class="card-text">
+                <h5>Entropy-Based Decision Tree - JavaScript</h5>
+                <p>Information theory for optimal decision-making.</p>
+              </div>
               </div>
             </div>
           </button>
         </form>
+      </div>
     </div>
   </div>
 
@@ -117,4 +146,5 @@
     crossorigin="anonymous"></script>
   <script></script>
 </body>
+
 </html>

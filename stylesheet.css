@@ -86,6 +86,7 @@
 .card-body.theme-inverse img{
     filter: grayscale(70%);
     -webkit-filter: grayscale(70%);
+    max-height: 25vh;
 }
 .card-body.theme-inverse:hover img{
     filter: grayscale(0%);

@@ -1,4 +1,13 @@
-
+@font-face {
+    font-family: Saonara;
+    src: url(SAONARA.otf);
+  }
+body{
+    background-image: url(Images/blueprint.jpg) ;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Saonara;
+}
 .center{
     text-align: center;
 }
@@ -117,14 +126,13 @@ img{
 
 
 .projects-header{
-    box-shadow: 3px 3px black;
+    text-align: center;
+    background-color: rgba(0,0,0,0.3);
+    color:white;
+
 }
 .post-nav-content{
     display: inline-block;
-    background-size: 40px 40px;
-    background-image:
-    linear-gradient(to right, skyblue 1px, transparent 1px),
-    linear-gradient(to bottom, skyblue 1px, darkslateblue 1px);
 }
 
 .card-text{
@@ -143,3 +151,149 @@ img{
 @media (min-width:768px){
 
 }
+
+.personal-info-header{
+    text-align: center;
+    color:white;
+}
+
+.full-page{
+    height:100vh;
+}
+.personal-info-header h1{
+    font-size: 10vh;
+    display: inline-block;
+}
+
+.personal-info-header p{
+    display: block;
+    font-size:3vh;
+}
+.spacer-one-third{
+    height:30vh;
+}
+.spacer-one-fifth{
+    height: 20vh;
+}
+
+.text-page{
+    background-color:white;
+    color:darkslategray;
+}
+.text-page-block{
+    height:25vh;
+    overflow: auto;
+}
+
+.text-page-header{
+    color: white;
+    text-align:center;
+}
+.text-page-header h1{
+    font-size: 7vh;
+}
+
+.text-page p{
+    font-size:2vh;
+}
+
+
+.underline{
+}
+
+.underline::after{
+    display: block;
+    content: '';
+    border-bottom: solid 2px white;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+    animation: underline 0.7s linear forwards;
+}
+
+@keyframes underline{
+    from{
+        transform: scaleX(0);
+    }
+    to{
+        transform: scaleX(1);
+    }
+}
+
+.fade-in{
+    opacity: 0;
+}
+.fade-in-loaded{
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.text-detail{
+    height:75vh;
+}
+
+.text-detail-deactivated{
+    display: none;
+}
+.text-page-button{
+    background-color: white;
+    border:1px coral solid;
+    color: darkslategray;
+    width:100%;
+}
+.text-page-button:hover{
+    background-color: coral;
+    border:1px coral solid;
+    color:white;
+}
+@media screen and (min-width: 768px){
+    .text-page-button{
+        width:auto;
+    }
+    .text-page p{
+        font-size:3vh;
+    }
+}
+.article{
+    background-color:white;
+    color:white;
+}
+
+.return-link{
+    background-color:coral; 
+    position: fixed;
+    bottom:0vh;
+    font-size: 4vh;
+    width: 100%;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 9999;
+    text-align: center;
+}
+.return-link a:visited{
+    color:white;
+}
+.return-link a:hover{
+    color:white;
+    text-decoration: none;
+    text-decoration-line: none;
+}
+
+@media screen and (min-width: 768px){
+    .return-link{
+        font-size: 5vh;
+        padding-left: 1vw;
+        padding-right: 1vw;
+        bottom:3vh;
+        left:3vh;
+        width: auto;
+    }
+}
+
+.progress-bar{
+    height:0.5vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+}
+

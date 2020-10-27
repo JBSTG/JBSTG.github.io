@@ -19,153 +19,137 @@
 
   <div class="return-link">
     <a href="../../index.html#projects">&lt;&lt;&lt;</a>
-  </div>  
+  </div>
 
   <div class="container theme-inverse article">
 
-  <div class="row theme">
-    <div class="col-md-10 offset-md-1 col-12">
-      <h1 class="display-4 ">Kanji Crawl</h1>
-    </div>
-  </div>
-  <div class="row spacer"></div>
-  <div class="row theme-inverse">
-    <div class="col-md-8 offset-md-2 col-12">
-      <p class="lead">
-        This project uses a <a target="_blank" href="https://kanjiapi.dev/">remote API</a> to download necessary data to
-        play a small memorization game.
-        Kanji is one of the three written scripts of the Japanese Language, it contains several thousand logographs that
-        each represent words or concepts.
-        This project downloads kanji as JSON data, creates C# objects, and serializes those objects to XML documents for
-        local storage.
-        We do this to avoid unneeded stress on the remote server we obtain our data from, as well as to track the user's
-        progress locally.
-      </p>
-    </div>
-    <div class="col-md-4 offset-md-4 col-12">
-      <img class="img-fluid" src="https://www.japan-guide.com/g4/2046_01.gif" onclick="loadModal(this)">
-    </div>
-    <div class="col-md-4 offset-md-4 col-12">
-      <div class="caption">
-        <p class="theme-inverse">Some Examples.</p>
+    <div class="row theme">
+      <div class="col-md-10 offset-md-1 col-12">
+        <h1 class="display-4 ">Kanji Crawl</h1>
       </div>
     </div>
-  </div>
-
-  <div class="row theme-inverse">
-    <div class="col-md-8 offset-md-2 col-12">
-      <p class="lead">
-        First, we look at the data we will need to download from the API. For our game we simply need the kanji's
-        character
-        and meanings; however, we will also take the readings as those may be useful in late versions of this program.
-        Currently, players are given a random kanji definition from the current set.
-        They must navigate around several incorrect kanji and find the one that corresponds to the given definition.
-      </p>
-    </div>
-    <div class="col-md-6 offset-md-3 col-12">
-      <img class="img-fluid" src="kanjiApiData.png" onclick="loadModal(this)">
-    </div>
-    <div class="col-md-4 offset-md-4 col-12">
-      <div class="caption">
-        <p class="theme-inverse">The data available for each kanji.</p>
+    <div class="row spacer"></div>
+    <div class="row theme-inverse">
+      <div class="col-md-8 offset-md-2 col-12">
+        <p class="lead">
+          This project uses data from <a target="_blank" href="https://kanjiapi.dev/">here</a> to create a tool for
+          learning the Japanese Kanji writing system.
+          The writing system uses thousands of logographic characters and forms the majority of Japanese scripts.
+          It is very difficult to learn, so I wanted to create something to help.
+        </p>
+      </div>
+      <div class="col-md-4 offset-md-4 col-12">
+        <img class="img-fluid" src="https://www.japan-guide.com/g4/2046_01.gif" onclick="loadModal(this)">
+      </div>
+      <div class="col-md-4 offset-md-4 col-12">
+        <div class="caption">
+          <p class="theme-inverse">Some Examples.</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="row theme-inverse">
-    <div class="col-md-8 offset-md-2 col-12">
-      <p class="lead">
-        The kanji are categorized by grade, and the player will select the grade they wish to practice before playing.
-        Once the user selects a grade, a corresponding XML file is deserialized into a KanjiList Object.
-        If the KanjiList is empty, we must download the list from the API.
-      </p>
-    </div>
-    <div class="col-md-6 offset-md-3 col-12">
-      <img class="img-fluid" src="readFromFile.png" onclick="loadModal(this)">
-    </div>
-    <div class="col-md-4 offset-md-4 col-12">
-      <div class="caption">
-        <p class="theme-inverse">This function reads from our local storage and loads the selected list into our
-          program.</p>
+
+    <div class="row spacer"></div>
+    <div class="row theme-inverse">
+      <div class="col-md-8 offset-md-2 col-12">
+        <p class="lead">
+          The data acquired from the API is stored as XML files prior to being loaded into a SQLite database.
+          I build the SQLite database on my end to spare the user first-time setup.
+          I prefer this approach as I can make changes to the database or the XML files very easily as well.
+        </p>
+      </div>
+      <div class="col-md-4 offset-md-4 col-12">
+        <img class="img-fluid" src="kanjiER.png" onclick="loadModal(this)">
+      </div>
+      <div class="col-md-4 offset-md-4 col-12">
+        <div class="caption">
+          <p class="theme-inverse">A rough diagram of the database.</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="row theme-inverse">
-    <div class="col-md-8 offset-md-2 col-12">
-      <p class="lead">
-        To download the kanji, we need an HttpClient and an async function. Using the function below we download each
-        kanji.
-        Unfortunately, it takes a while to download the entire set. I may add a separate thread to avoid freezing the
-        GUI
-        while the kanji downloads.
-      </p>
-    </div>
-    <div class="col-md-6 offset-md-3 col-12">
-      <img class="img-fluid" src="download.png" onclick="loadModal(this)">
-    </div>
-    <div class="col-md-4 offset-md-4 col-12">
-      <div class="caption">
-        <p class="theme-inverse">Downloading our data and creating a Kanji object.</p>
+
+    <div class="row spacer"></div>
+    <div class="row theme-inverse">
+      <div class="col-md-8 offset-md-2 col-12">
+        <p class="lead">
+          The project uses a game format to help users learn, they use the arrows keys to navigate to the correct kanji.
+          I feel like this provides a low-stress experience for users,
+          although I may add an optional time limit in the future.
+        </p>
+      </div>
+      <div class="col-md-6 offset-md-3 col-12">
+        <video controls autoplay loop>
+          <source src="gameplay.mp4">
+        </video>
+
+      </div>
+      <div class="col-md-4 offset-md-4 col-12">
+        <div class="caption">
+          <p class="theme-inverse">Current Gameplay</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="row theme-inverse">
-    <div class="col-md-8 offset-md-2 col-12">
-      <p class="lead">
-        Once the list is downloaded and placed into a KanjiList object, it is written to the corresponding XML file
-        through
-        an XML serializer.
-        Next, a new object is instantiated using the recently downloaded data (or data loaded from an existing file if a
-        set exists for a category).
-        This object handles the basic game loop, which is pretty straightforward.
-        Several random kanji are scattered across a grid, and one is randomly selected as the target.
-        The user is given the definitions of the target,
-      </p>
-    </div>
-    <div class="col-md-6 offset-md-3 col-12">
-      <img class="img-fluid" src="game.png" onclick="loadModal(this)">
-    </div>
-    <div class="col-md-4 offset-md-4 col-12">
-      <div class="caption">
-        <p class="theme-inverse">Current game screen, just a arrow theme-inverse-navigation game.</p>
+
+    <div class="row spacer"></div>
+    <div class="row theme-inverse">
+      <div class="col-md-8 offset-md-2 col-12">
+        <p class="lead">
+          I also used this project as an opportunity to experiment with WPF's templating tools.
+          Users can switch between styles stored in a resource dictionary.
+          This is saved upon restarting using .NET settings configration utilities
+          and is also updated immediately as the top-level view model is notified immediately.
+          Currently, users can toggle styles and gridline visibility.
+        </p>
+      </div>
+      <div class="col-md-6 offset-md-3 col-12">
+        <video controls autoplay loop>
+          <source src="settings.mp4">
+        </video>
+
+      </div>
+      <div class="col-md-4 offset-md-4 col-12">
+        <div class="caption">
+          <p class="theme-inverse">Demonstrating configuration changes</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="row theme-inverse">
-    <div class="col-md-8 offset-md-2 col-12">
-      <p class="lead">
-        When the user hits the save and quit button, their accuracy for memorizing a given kanji is updated.
-        When the user next loads the game, they will be able to see that accuracy in the upper-left corner.
-      </p>
-    </div>
-  </div>
 
-  <div class="row theme-inverse">
-    <div class="col-md-8 offset-md-2 col-12">
-      <p class="lead">
-        The primary goal of this project was to work with local storage and remote API usage in C#, which I feel was a
-        great success.
-
-        I may improve the presentation of this project in the future,
-        so the github repository can be found <a target="_blank" href="https://github.com/JBSTG/Kanji-Crawl/">here.</a>
-      </p>
-    </div>
-  </div>
-
-  <div class="modalBg" id="modal" onclick="closeModal(this)">
-    <div class="row theme-inverse h-100">
-      <div class="align-self-center mx-auto d-block">
-        <img id="modalImg" class="img-fluid" src="#">
+    <div class="row spacer"></div>
+    <div class="row theme-inverse">
+      <div class="col-md-8 offset-md-2 col-12">
+        <p class="lead">
+          However, my primary purpose for this project is to further familiarize myself with the Model-View-ViewModel
+          design pattern often used with WPF. The purpose of this design pattern is to improve UI content updates via data-binding,
+          assist in debugging by centralizing logic, and improve loose-coupling by removing the Xaml file's dependency on its
+          code-behind (Which also assists in debugging).
+          The following image is my code behind for the game view shown above, an empty code behind does not necessarily demonstrate good design,
+          and is sometimes not even possible. However, for this project I have been able to closely adhere to MVVM and observe some of its strengths and weaknesses first-hand.
+        </p>
+      </div>
+      <div class="col-md-4 offset-md-4 col-12">
+        <img class="img-fluid" src="codeBehind.png" onclick="loadModal(this)">
+      </div>
+      <div class="col-md-4 offset-md-4 col-12">
+        <div class="caption">
+          <p class="theme-inverse">My gameview's code behind. </p>
+        </div>
       </div>
     </div>
+
+    <div class="modalBg" id="modal" onclick="closeModal(this)">
+      <div class="row theme-inverse h-100">
+        <div class="align-self-center mx-auto d-block">
+          <img id="modalImg" class="img-fluid" src="#">
+        </div>
+      </div>
+    </div>
+
+    <div class="row spacer"></div>
+
   </div>
-
-  <div class="row spacer"></div>
-
-</div>
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

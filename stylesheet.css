@@ -175,6 +175,9 @@ img{
 .spacer-one-fifth{
     height: 20vh;
 }
+.spacer-one-tenth{
+    height:10vh;
+}
 
 .text-page{
     background-color:white;
@@ -183,6 +186,7 @@ img{
 .text-page-block{
     height:25vh;
     overflow: auto;
+    padding:3vh;
 }
 
 .text-page-header{
@@ -196,7 +200,9 @@ img{
 .text-page p{
     font-size:2vh;
 }
-
+#detail-title{
+    padding:3vh;
+}
 
 .underline{
 }
@@ -297,3 +303,6 @@ img{
     z-index: 999;
 }
 
+video{
+    width: 100%;
+}

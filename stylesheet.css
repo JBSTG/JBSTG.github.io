@@ -204,9 +204,6 @@ img{
     padding:3vh;
 }
 
-.underline{
-}
-
 .underline::after{
     display: block;
     content: '';
@@ -305,4 +302,15 @@ img{
 
 video{
     width: 100%;
+}
+
+.unfinished{
+    color: white;
+    background: repeating-linear-gradient(
+        -55deg,
+        #222222,
+        #222222 10px,
+        #555500 10px,
+        #555500 20px
+    );
 }

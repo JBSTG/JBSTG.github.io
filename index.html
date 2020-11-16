@@ -80,7 +80,8 @@
       </div>
       <div class="text-page-block fade-in">
         <p>
-          My primary areas of study are data science and statistics. I try to experiment with a variety of applications and
+          My primary areas of study are data science and statistics. I try to experiment with a variety of applications
+          and
           methodologies.
         </p>
         <button class="text-page-button" id="data-science-button">Learn More</button>
@@ -125,23 +126,10 @@
         </form>
       </div>
 
-      <!--Michael Ancher-->
-      <div class="col-12 col-md-5 theme-inverse">
-        <form action="https://michaelancher.azurewebsites.net/#title" target="_blank" method="GET">
-          <button class="project">
-            <div class="card-body theme-inverse">
-              <img src="Projects/michaelAncher/thumb.png" class="project-thumbnail"></img>
-              <div class="card-text">
-                <h5>Michael Ancher - Bootstrap 3/Scrollify/jQuery</h5>
-                <p>Art-Focused web frontend</p>
-              </div>
-            </div>
-          </button>
-        </form>
-      </div>
+
 
       <!--Kanji-->
-      <div class="col-12 col-md-5 offset-md-1 theme-inverse">
+      <div class="col-12 col-md-5 theme-inverse">
         <form action="Projects/kanjiCrawl/index.html" method="GET">
           <button class="project">
             <div class="card-body theme-inverse">
@@ -156,7 +144,7 @@
         </form>
       </div>
       <!--Chat-->
-      <div class="col-12 col-md-5 theme-inverse">
+      <div class="col-12 col-md-5 offset-md-1 theme-inverse">
         <form action="Projects/chat/index.html" method="GET">
           <button class="project">
             <div class="card-body theme-inverse">
@@ -171,7 +159,7 @@
       </div>
 
       <!--Decision Tree-->
-      <div class="col-12 col-md-5 offset-md-1 theme-inverse">
+      <div class="col-12 col-md-5 theme-inverse">
         <form action="Projects/cdt/index.html" method="GET">
           <button class="project ">
             <div class="card-body theme-inverse">
@@ -184,6 +172,40 @@
           </button>
         </form>
       </div>
+
+
+      <!--Michael Ancher-->
+      <div class="col-12 col-md-5 offset-md-1 theme-inverse">
+        <form action="https://michaelancher.azurewebsites.net/#title" target="_blank" method="GET">
+          <button class="project">
+            <div class="card-body theme-inverse">
+              <img src="Projects/michaelAncher/thumb.png" class="project-thumbnail"></img>
+              <div class="card-text">
+                <h5>Michael Ancher - Bootstrap 3/Scrollify/jQuery</h5>
+                <p>Art-Focused web frontend</p>
+              </div>
+            </div>
+          </button>
+        </form>
+      </div>
+
+
+      <!--ANOVA-->
+      <div class="col-12 col-md-5 theme-inverse">
+        <form action="https://reactanova.azurewebsites.net/" target="_blank" method="GET">
+          <button class="project">
+            <div class="card-body unfinished">
+              <img src="Projects/anova/sigma.png" class="project-thumbnail"></img>
+              <div class="card-text ">
+                <h5>React ANOVA - React.JS/ASP.NET Core</h5>
+                <p>Analysis of variance with React.JS.<br> (Work in progress)</p>
+              </div>
+            </div>
+          </button>
+        </form>
+      </div>
+
+
     </div>
 
     <div class="row spacer"></div>
@@ -269,10 +291,6 @@
 
 
 
-
-
-
-
       $("#return-button").click(function () {
         $("#text-overview").css("display", "block");
         $("#text-detail").css("display", "none");
@@ -297,7 +315,7 @@
 
 
       var scrollPercentage = 100 * $(window).scrollTop() / ($(document).height() - $(window).height());
-      $("#progress-bar").css("width",scrollPercentage+"vw");
+      $("#progress-bar").css("width", scrollPercentage + "vw");
 
     });
   </script>

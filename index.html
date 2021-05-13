@@ -265,6 +265,16 @@
   <script>
     $(function () {
 
+      var aboutTop = document.getElementById("about-page").getBoundingClientRect().top;
+      if (aboutTop < window.innerHeight) {
+        $(".fade-in").each(function (i) {
+          var elem = this;
+          setTimeout(function () {
+            $(elem).addClass("fade-in-loaded");
+          }, i * 1000);
+        });
+      }
+
       $("#data-science-button").click(function () {
         $("#text-overview").css("display", "none");
         $("#text-detail").css("display", "block");
@@ -291,6 +301,9 @@
 
 
 
+
+
+
       $("#return-button").click(function () {
         $("#text-overview").css("display", "block");
         $("#text-detail").css("display", "none");
@@ -303,8 +316,7 @@
     });
     document.addEventListener("scroll", function () {
       var aboutTop = document.getElementById("about-page").getBoundingClientRect().top;
-
-      if (aboutTop == 0) {
+      if (aboutTop < window.innerHeight) {
         $(".fade-in").each(function (i) {
           var elem = this;
           setTimeout(function () {

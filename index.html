@@ -316,14 +316,12 @@
     });
     document.addEventListener("scroll", function () {
       var aboutTop = document.getElementById("about-page").getBoundingClientRect().top;
-      if (aboutTop < window.innerHeight) {
-        $(".fade-in").each(function (i) {
-          var elem = this;
-          setTimeout(function () {
-            $(elem).addClass("fade-in-loaded");
-          }, i * 1000);
-        });
-      }
+      $(".fade-in").each(function (i) {
+        var elem = this;
+        setTimeout(function () {
+          $(elem).addClass("fade-in-loaded");
+        }, i * 1000);
+      });
 
 
       var scrollPercentage = 100 * $(window).scrollTop() / ($(document).height() - $(window).height());
